@@ -4,7 +4,7 @@ import pymssql
  
 # MSSQL 접속
 # 테스트하는 본인 환경에 맞출것 (단, charset은 건드리면 한글 불가능)
-conn = pymssql.connect(host=r"(local)", user='sa', password='9132', database='master', charset='UTF-8')
+conn = pymssql.connect(host=r"(local)", user='sa', password='1234', database='master', charset='UTF-8')
 #conn = pymssql.connect(host=r"(local)", user='madanguser', password='madangpass', database='Madang', charset='UTF-8')
 # Connection 으로부터 Cursor 생성
 cursor = conn.cursor()
