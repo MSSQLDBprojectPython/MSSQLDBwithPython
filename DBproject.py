@@ -33,7 +33,7 @@ def ranking():       # 랭킹 출력
     row=cursor.fetchall()
     if row: # 책이 하나라도 등록돼있으면
         i=0
-        print("등수\t책이름\t점수")
+        print("등수\t책이름\t점수(평균)")
         while row: # 책이름 점수평균 전부 출력
             if i>=len(row):
                 break
@@ -57,7 +57,7 @@ def rate():          # 책 평가
             if row: # 책이름 검색결과가 있으면
                 while True:
                     user_score=int(input("당신의 점수는?(0~10)")) # 점수 받고
-                    if user_score>=0 and user_score<10: # 0~10점 조건 체크
+                    if user_score>=0 and user_score<=10: # 0~10점 조건 체크
                         book_id_rate=row[1] # 책ID 받아오고
                         cursor.execute("SELECT Users_ID FROM Library_Users WHERE Users_Name = N'%s'" %(NowLoginUser)) # 로그인중인 유저의 UserID를 Users테이블에서 불러오기
                         # NowLoginUser: plz_login()에서 global로 저장된 지금 로그인중인 유저의 이름
@@ -184,6 +184,7 @@ def addBook():       # 책 등록
     else: # 없으면 추가
         cursor.execute("INSERT INTO Book VALUES ('%d',N'%s',N'%s',N'%s',N'%s')"%(book_ID,book_name_add,book_writer,book_publisher,book_topic))
         conn.commit()
+        input("계속하려면 엔터키를 누르세요...")
 
 # addBook()
 # search()
